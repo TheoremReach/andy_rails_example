@@ -11,8 +11,8 @@ gem 'pg'
 # gem 'puma_worker_killer'
 gem 'redis'#, '~> 3.0'
 gem "rest-client"
-#gem "awesome_print"
-#gem 'sidekiq'#, '5.0.4'
+gem "awesome_print"
+gem 'sidekiq'#, '5.0.4'
 gem "puma"
 
 group :production do 
