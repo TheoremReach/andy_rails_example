@@ -11,15 +11,15 @@ gem 'pg'
 # gem 'puma_worker_killer'
 gem 'redis'#, '~> 3.0'
 gem "rest-client"
-gem "awesome_print"
-gem 'sidekiq'#, '5.0.4'
+#gem "awesome_print"
+#gem 'sidekiq'#, '5.0.4'
 gem "puma"
 
 group :production do 
   gem 'newrelic_rpm'
 end
 
-gem "rack", '1.6.4'
+gem "rack"
 
 gem "nokogiri"
 gem "httparty"
