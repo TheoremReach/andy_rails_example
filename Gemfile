@@ -19,6 +19,8 @@ group :production do
   gem 'newrelic_rpm'
 end
 
+gem "rack", '2.1.4'
+
 gem "nokogiri"
 gem "httparty"
 #gem 'rb-readline' 
