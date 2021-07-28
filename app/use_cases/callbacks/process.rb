@@ -13,14 +13,14 @@ class Callbacks::Process
   def ex
     #ap params
     begin
-      if version.blank? || version == 1
+      if version == 1
         v1
       elsif version == 2
         v2
       elsif version == 3
         v3
       else 
-        v1
+        v3
       end
 
     # rescue RestClient::Forbidden => ex
