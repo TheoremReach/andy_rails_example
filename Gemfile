@@ -19,7 +19,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem "rack", '2.1.4'
+gem "rack", '1.6.4'
 
 gem "nokogiri"
 gem "httparty"
