@@ -1,0 +1,1 @@
+$redis = Redis.new(:url => Rails.application.credentials[:"#{Rails.env}"][:redis_url]) if Rails.application.credentials[:"#{Rails.env}"]

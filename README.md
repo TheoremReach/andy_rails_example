@@ -1,5 +1,13 @@
 # README
 
+Whitelisted IPS
+44.196.100.149
+44.196.6.34
+54.243.243.191
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

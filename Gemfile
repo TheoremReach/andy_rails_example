@@ -20,6 +20,7 @@ group :production do
 end
 
 gem "rack"
+gem "sha3"
 
 gem "nokogiri"
 gem "httparty"
