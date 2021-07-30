@@ -17,7 +17,6 @@
 /tmp
 bundler_stubs/
 
-/config/database.yml
 *.dump
 *.sql
 *.txt

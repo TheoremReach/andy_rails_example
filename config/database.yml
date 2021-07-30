@@ -1,0 +1,31 @@
+test: 
+  adapter: postgresql
+  encoding: utf8
+  database: uw_callback_proxy_test
+  password: ""
+  name: adam
+  pool: 50
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: uw_callback_proxy_dev
+  password: ""
+  name: adam
+  pool: 50
+staging:
+  adapter: postgresql
+  encoding: utf8
+  database: uw_callback_proxy_staging
+  password: ""
+  name: adam
+  pool: 50
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: "uw_callback_proxy_production"
+  host: "userwise-callback-proxy-production.co1xtfpzymbq.us-east-1.rds.amazonaws.com"
+  port: 5432
+  username: "postgres"
+  password: "oTQ3dh!g0Cq^K89K"
+  pool: 100
+  prepared_statements: false
