@@ -45,6 +45,42 @@ class Api::V1::ApiController < ApplicationController
   def hints; @hints || [] end
   def hints=(hints); @hints = hints end
   def add_hint(hint); @hints = hints << hint end
+  ############
+  ## Renderers
+  ############
 
+  def render_error(errors: [], status: :bad_request, **params)
+    errors = [errors] unless errors.is_a? Array
+
+    begin
+      errors.each do |error|
+        UserWise::LogError.new().log!(error: error, company: current_company, app: current_app)
+      end
+    rescue => ex
+      Rails.logger.error("#{self.class.name} - Error - #{ex.message}")
+      Rollbar.error(ex)
+    end
+
+    return render(
+      json: { errors: errors, data: {}, meta: { warnings: warnings, hints: hints } },
+      status: status,
+      adapter: :json,
+      **params
+    )
+  end
+
+  def render_success(data: {}, status: :ok, **params)
+    metadata = { warnings: warnings, hints: hints }
+    metadata[:query] = params[:query_meta] if params[:query_meta]
+
+    return render(
+      json: data,
+      meta: metadata,
+      root: 'data', 
+      status: status,
+      adapter: :json,
+      **params
+    )
+  end
   
 end
