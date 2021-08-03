@@ -33,4 +33,18 @@ class Api::V1::ApiController < ApplicationController
       status: :forbidden
     )
   end
+
+  #####################
+  ## Request Metadata
+  #####################
+  
+  def warnings; @warnings || [] end
+  def warnings=(warnings); @warnings = warnings end
+  def add_warning(warning); @warnings = warnings << warning end
+
+  def hints; @hints || [] end
+  def hints=(hints); @hints = hints end
+  def add_hint(hint); @hints = hints << hint end
+
+  
 end
