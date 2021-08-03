@@ -53,9 +53,9 @@ class Api::V1::ApiController < ApplicationController
     errors = [errors] unless errors.is_a? Array
 
     begin
-      errors.each do |error|
-        UserWise::LogError.new().log!(error: error, company: current_company, app: current_app)
-      end
+      # errors.each do |error|
+      #   UserWise::LogError.new().log!(error: error, company: current_company, app: current_app)
+      # end
     # rescue => ex
     #   Rails.logger.error("#{self.class.name} - Error - #{ex.message}")
     #   Rollbar.error(ex)
