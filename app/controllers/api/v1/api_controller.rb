@@ -20,7 +20,7 @@ class Api::V1::ApiController < ApplicationController
     valid_url_hash = Utility::ValidUrl.new(
       url: request.original_url,
       body: body,
-      secret: "d9ba573850d34067307c751a216e747c1d6367a138ff136362b843975a38c16aac34"
+      secret: "caf536d72a7db63fe0499638fcd91a946cf181c132b6d5b41cfaaf11234143d2"
     )
 
     hash_is_valid = valid_url_hash.ex
