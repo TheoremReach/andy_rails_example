@@ -26,7 +26,7 @@ class Api::V1::ApiController < ApplicationController
     hash_is_valid = valid_url_hash.ex
     return true if hash_is_valid
 
-    Rails.logger.error("Request contains an invalid security hash.  url=#{request.original_url} orig_body=#{body} orig_body_class=#{body.class} body=#{valid_url_hash.XP} provided_hash=#{valid_url_hash.provided_hash} expected_hash=#{valid_url_hash.generated_hash}")
+    Rails.logger.error("Request contains an invalid security hash.  url=#{request.original_url} orig_body=#{body} orig_body_class=#{body.class} body=#{valid_url_hash.body_without_hash} provided_hash=#{valid_url_hash.provided_hash} expected_hash=#{valid_url_hash.generated_hash}")
     add_hint 'See our request hashing docs here: https://docs.userwise.io/#request-hashing-required'
     return render_error(
       errors: ['Security request hash verification failed.'],
