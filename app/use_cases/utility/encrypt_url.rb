@@ -36,6 +36,10 @@ class Utility::EncryptUrl
   end
 
   def secret_hash
+    Rails.logger.error("HashMethod: #{hash_method}")
+    Rails.logger.error("Url: #{url}")
+    Rails.logger.error("body: #{body}")
+
     SHA3::Digest.hexdigest :sha256, secret_url
   end
 end
