@@ -17,16 +17,17 @@ class Api::V1::ApiController < ApplicationController
   def verify_security_hashing!
     # only request body hashing if we're working with json
     body = if request.form_data? then nil else request.body.read end
+    
     valid_url_hash = Utility::ValidUrl.new(
       url: request.original_url,
-      body: request.body,
+      body: params[:data].permit!,
       secret: "caf536d72a7db63fe0499638fcd91a946cf181c132b6d5b41cfaaf11234143d2"
     )
 
     hash_is_valid = valid_url_hash.ex
     return true if hash_is_valid
 
-    Rails.logger.error("Request contains an invalid security hash.  url=#{request.original_url} orig_body=#{request.body} orig_body_class=#{request.body.class} body=#{valid_url_hash.body_without_hash} provided_hash=#{valid_url_hash.provided_hash} expected_hash=#{valid_url_hash.generated_hash}")
+    Rails.logger.error("Request contains an invalid security hash.  url=#{request.original_url} params=#{params[:data]} orig_body_class=#{request.body.class} body=#{valid_url_hash.body_without_hash} provided_hash=#{valid_url_hash.provided_hash} expected_hash=#{valid_url_hash.generated_hash}")
     add_hint 'See our request hashing docs here: https://docs.userwise.io/#request-hashing-required'
     return render_error(
       errors: ['Security request hash verification failed.'],
