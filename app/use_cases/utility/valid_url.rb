@@ -17,12 +17,7 @@ class Utility::ValidUrl
   end
 
   def body_without_hash
-    begin
-      no_hash_body = JSON.parse(body).except('enc') unless body.blank?
-      return JSON::dump(no_hash_body) unless no_hash_body.nil? or no_hash_body.keys.blank?
-    rescue
-      return nil
-    end
+    body
   end
 
   def generated_hash
