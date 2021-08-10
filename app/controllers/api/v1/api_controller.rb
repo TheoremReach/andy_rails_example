@@ -18,6 +18,8 @@ class Api::V1::ApiController < ApplicationController
     # only request body hashing if we're working with json
     body = if request.form_data? then nil else request.body.read end
     
+    Rails.logger.error("Params Data: #{params[:data].permit!}")
+
     valid_url_hash = Utility::ValidUrl.new(
       url: request.original_url,
       body: params[:data].permit!,
