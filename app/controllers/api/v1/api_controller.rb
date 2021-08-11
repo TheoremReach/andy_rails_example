@@ -18,13 +18,9 @@ class Api::V1::ApiController < ApplicationController
     # only request body hashing if we're working with json
     body = if request.form_data? then nil else request.body.read end
     
-    Rails.logger.error("BODY: #{body}")
-    Rails.logger.error("Params Data: #{params.permit(:data).to_json}")
-    Rails.logger.error("Original url: #{request.original_url}")
-
     valid_url_hash = Utility::ValidUrl.new(
       url: request.original_url,
-      body: params.permit(:data).to_json,
+      body: params.require(:data).permit!.to_h.to_json,
       secret: "caf536d72a7db63fe0499638fcd91a946cf181c132b6d5b41cfaaf11234143d2"
     )
 

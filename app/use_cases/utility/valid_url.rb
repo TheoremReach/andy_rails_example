@@ -12,7 +12,6 @@ class Utility::ValidUrl
 
     return false if url.blank?
     
-
     return provided_hash.eql? generated_hash
   end
 

@@ -4,18 +4,22 @@ class Api::V2::RouteCallbackController < Api::V1::ApiController
 
   def create
 
-    if params[:url].blank?
+    if route_params[:url].blank?
       Rails.logger.warn {"No URL Specified"}
       render json: {errors: ["No URL Specified"]}, status: :unprocessable_entity
       return
     end
 
-    render json: Callbacks::V2::Process.new(params: params.permit!).ex, status: 200
+    render json: Callbacks::V2::Process.new(params:route_params).ex, status: 200
 
   end
 
   def index
     render json: {error: "hi"}, status: 203
+  end
+
+  def route_params
+    params.require(:data).permit!
   end
 
 
