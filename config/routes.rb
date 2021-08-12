@@ -3,17 +3,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1, defaults: {format: 'json'} do
-      resources :route_callback, only: [:create, :index] 
-    end  
-    namespace :v2, defaults: {format: 'json'} do
-      resources :route_callback, only: [:create] 
-    end  
-
+      resources :respondent_result, only: [:create]
+      resources :survey_callback, only: [:create]
+    end
   end
 
   get "/health_check", to: "static#health_check"
 
   get "/" => redirect("https://google.com")
-
 end
-
